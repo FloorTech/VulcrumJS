@@ -1,0 +1,9 @@
+{
+  "name": "vulcrumjs",
+  "version": "0.1.0",
+  "description": "FloorTech's own web framework, based on TypeScript!",
+  "main": "dist/index.js",
+  "scripts": {},
+  "author": "FloorTech",
+  "license": "MIT"
+}
