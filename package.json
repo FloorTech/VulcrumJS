@@ -3,7 +3,16 @@
   "version": "0.1.0",
   "description": "FloorTech's own web framework, based on TypeScript!",
   "main": "dist/index.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "tsx --watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
   "author": "FloorTech",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
 }
