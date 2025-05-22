@@ -20,6 +20,10 @@ export default function home({ p, div, }) {
         div([
             p("Container paragraph!"),
             p("Second container paragraph!"),
+            p([
+                "Paragraph with multiple children!",
+                ` <a href="https://www.example.com" parent="_blank">This is a link inside a paragraph!</a>`,
+            ]),
         ]),
         cool({ p, }),
     ])
