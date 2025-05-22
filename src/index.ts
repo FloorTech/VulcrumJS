@@ -50,7 +50,7 @@ async function loadComponent(componentPathRaw: string, helpers: Record<string, a
 async function buildComponent(componentPathRaw: string, templatePath: string) {
     const componentPath = path.resolve(componentPathRaw)
     const filename = path.basename(componentPath, path.extname(componentPath))
-    const buildFileContainer = path.join(path.dirname(componentPath), filename)
+    const buildFileContainer = filename === "index" ? path.dirname(componentPath) : path.join(path.dirname(componentPath), filename)
 
     if (!fs.existsSync(buildFileContainer))
         fs.mkdirSync(buildFileContainer)
