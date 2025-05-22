@@ -47,8 +47,6 @@ async function loadComponent(componentPathRaw: string, helpers: Record<string, a
 }
 
 async function demo() {
-    console.log(Object.values(components))
-
     const html = (await loadComponent(
         "examples/home.js",
         components
