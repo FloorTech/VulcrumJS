@@ -1,5 +1,11 @@
 import cool from "./cool.js"
 
+export function stylesheets() {
+    return [
+        "/css/site.css",
+    ]
+}
+
 export function metadata() {
     return {
         title: "home page",
