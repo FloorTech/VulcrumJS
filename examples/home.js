@@ -1,9 +1,18 @@
+import cool from "./cool.js"
+
+export function metadata() {
+    return {
+        title: "home page",
+    }
+}
+
 export default function home({ p, div, }) {
-    return [
+    return div([
         p("Hello!"),
         div([
             p("Container paragraph!"),
             p("Second container paragraph!"),
         ]),
-    ]
+        cool({ p, }),
+    ])
 }

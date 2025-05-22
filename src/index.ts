@@ -2,7 +2,9 @@ import fs from "fs"
 import path from "path"
 import * as components from "./components"
 
-async function loadComponent(componentPathRaw: string, helpers: Record<string, any>): Promise<string[]> {
+type Metadata = Record<string, string>
+
+async function loadComponent(componentPathRaw: string, helpers: Record<string, any>): Promise<[Metadata, string]> {
     const componentPath = path.resolve(componentPathRaw)
     const filename = path.basename(componentPath, path.extname(componentPath))
 
@@ -11,38 +13,59 @@ async function loadComponent(componentPathRaw: string, helpers: Record<string, a
         if (module) {
             if (!module.default) {
                 return [
-                    components.p(`The component "${filename}" did not load correctly!`),
-                    components.p("No default export is provided."),
+                    {
+                        title: "Error",
+                    },
+                    components.div([
+                        components.p(`The component "${filename}" did not load correctly!`),
+                        components.p("No default export is provided."),
+                    ]),
                 ]
             }
 
             if (typeof module.default !== "function") {
                 return [
-                    components.p(`The component "${filename}" did not load correctly!`),
-                    components.p("The default export must be a function."),
+                    {
+                        title: "Error",
+                    },
+                    components.div([
+                        components.p(`The component "${filename}" did not load correctly!`),
+                        components.p("The default export must be a function."),
+                    ]),
                 ]
             }
 
             const result = module.default({ ...helpers, })
+            let metadata = {}
 
-            if (!Array.isArray(result) || !result.every(x => typeof x === "string")) {
-                return [
-                    components.p(`The component "${filename}" did not load correctly!`),
-                    components.p("The default export must be a function returning other components inside an array."),
-                ]
+            if (module.metadata) {
+                metadata = module.metadata()
             }
 
-            return result
+            return [
+                metadata,
+                result,
+            ]
         }
 
         return [
-            components.p(`The component "${filename}" did not load correctly!`),
-            components.p("The error is unknown"),
+            {
+                title: "Error",
+            },
+            components.div([
+                components.p(`The component "${filename}" did not load correctly!`),
+                components.p("The error is unknown"),
+            ])
         ]
     } catch (error) {
         return [
-            components.p(`The component "${filename}" did not load correctly!`),
-            components.p(error instanceof Error ? `${error.message} at ${error.stack}` : "The error is unknown"),
+            {
+                title: "Error",
+            },
+            components.div([
+                components.p(`The component "${filename}" did not load correctly!`),
+                components.p(error instanceof Error ? `${error.message} at ${error.stack}` : "The error is unknown"),
+            ])
         ]
     }
 }
@@ -56,11 +79,11 @@ async function buildComponent(componentPathRaw: string, templatePath: string) {
         fs.mkdirSync(buildFileContainer)
 
     const buildfilePath = path.join(buildFileContainer, "index.html")
-    const html = (await loadComponent(
+    const [metadata, html] = (await loadComponent(
         componentPath,
         components
-    )).join("")
-    fs.writeFileSync(buildfilePath, transformTemplate(html, templatePath, () => {
+    ))
+    fs.writeFileSync(buildfilePath, transformTemplate(html, metadata, templatePath, () => {
         return components.div([
             components.p(`The component "${filename}" did not load correctly!`),
             components.p("The specified template path does not exist."),
@@ -68,13 +91,32 @@ async function buildComponent(componentPathRaw: string, templatePath: string) {
     }), "utf-8")
 }
 
-function transformTemplate(newHtml: string, templatePath: string, onTemplateNotFound: () => string): string {
+function transformTemplate(newHtml: string, metadataRaw: Metadata, templatePath: string, onTemplateNotFound: () => string): string {
     if (!fs.existsSync(templatePath)) {
         return onTemplateNotFound()
     }
 
     let templateHtml = fs.readFileSync(templatePath, "utf-8")
+    const metadataElements: string[] = []
+
+    for (const key of Object.keys(metadataRaw)) {
+        switch (key) {
+            case "title":
+                // metadataElements.push(`<title>${metadataRaw[key]}</title>`)
+                if (templateHtml.includes("<title>") && templateHtml.includes("</title>"))
+                    templateHtml = templateHtml.replace(/<title>.*<\/title>/g, `<title>${metadataRaw[key]}</title>`)
+                else
+                    metadataElements.push(`<title>${metadataRaw[key]}</title>`)
+
+                break
+            default:
+                metadataElements.push(`<meta name="${key}" content="${metadataRaw[key]}" />`)
+                break
+        }
+    }
+
     templateHtml = `<!-- This page was auto-generated by VulcrumJS -->\n${templateHtml}`
+    templateHtml = templateHtml.replace(/<VulcrumHead \/>/g, metadataElements.join(""))
     templateHtml = templateHtml.replace(/<VulcrumRoot \/>/g, newHtml)
     return templateHtml
 }
