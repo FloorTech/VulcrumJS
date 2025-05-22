@@ -14,7 +14,9 @@ export function metadata() {
 
 export default function home({ p, div, }) {
     return div([
-        p("Hello!"),
+        p("Hello!", {
+            class: "heading",
+        }),
         div([
             p("Container paragraph!"),
             p("Second container paragraph!"),
