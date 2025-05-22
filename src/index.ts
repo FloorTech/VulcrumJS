@@ -3,7 +3,7 @@ import * as components from "./components"
 
 async function loadComponent(componentPathRaw: string, helpers: Record<string, any>): Promise<string[]> {
     const componentPath = path.resolve(componentPathRaw)
-    const filename = path.basename(componentPath, ".js")
+    const filename = path.basename(componentPath, path.extname(componentPath))
 
     try {
         const module = await import(`file://${componentPath}`)
