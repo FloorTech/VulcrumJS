@@ -1,4 +1,5 @@
 {
+  "scope": "@floortech",
   "name": "vulcrumjs",
   "version": "0.1.0",
   "description": "FloorTech's own web framework, based on TypeScript!",
