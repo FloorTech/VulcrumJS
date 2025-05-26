@@ -1,17 +1,18 @@
 {
   "private": false,
   "name": "@floortech/vulcrumjs",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "FloorTech's own web framework, based on TypeScript!",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "dev": "tsx --watch src/index.ts -p examples/home.js",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "upload": "npm run build && npm publish --access public"
   },
   "bin": {
-    "vulcrum": "node dist/index.js"
+    "vulcrum": "dist/index.js"
   },
   "author": "FloorTech",
   "license": "MIT",
