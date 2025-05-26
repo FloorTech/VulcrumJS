@@ -1,4 +1,4 @@
-import type { ComponentMetadata } from "./component-loader"
+import type { ComponentMetadata } from "./component-loader.js"
 import fs from "fs"
 
 export default function transformTemplate(newHtml: string, metadataRaw: ComponentMetadata, stylesheetsRaw: string[], templatePath: string, onTemplateNotFound: () => string): string {

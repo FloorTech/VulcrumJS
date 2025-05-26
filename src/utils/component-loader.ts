@@ -1,5 +1,5 @@
 import path from "path"
-import * as components from "../components"
+import * as components from "../components/index.js"
 
 export type ComponentMetadata = Record<string, string>
 

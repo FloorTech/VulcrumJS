@@ -1,5 +1,5 @@
-import p from "./p"
-import div from "./div"
+import p from "./p.js"
+import div from "./div.js"
 export {
     p,
     div,

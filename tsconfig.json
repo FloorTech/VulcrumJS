@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "Node18",
     "rootDir": "./src",
     "allowJs": true,
     "outDir": "./dist",
@@ -13,6 +12,7 @@
     "skipLibCheck": true
   },
   "exclude": [
+    "dist/",
     "examples/",
   ]
 }

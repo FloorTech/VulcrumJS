@@ -1,8 +1,8 @@
 import fs from "fs"
 import path from "path"
-import * as components from "../components"
-import loadComponent from "../utils/component-loader"
-import transformTemplate from "../utils/template-transformer"
+import * as components from "../components/index.js"
+import loadComponent from "../utils/component-loader.js"
+import transformTemplate from "../utils/template-transformer.js"
 
 export async function buildComponent(componentPathRaw: string, templatePath: string) {
     const componentPath = path.resolve(componentPathRaw)

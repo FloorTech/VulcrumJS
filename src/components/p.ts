@@ -1,4 +1,4 @@
-import handleAttributes from "../utils/handle-attributes"
+import handleAttributes from "../utils/handle-attributes.js"
 
 export default function p(textOrChildren: string | string[], attributes: Record<string, string> = {}): string {
     let attributesString = handleAttributes(attributes)
