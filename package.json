@@ -1,7 +1,6 @@
 {
-  "scope": "@floortech",
-  "name": "vulcrumjs",
-  "version": "0.1.1",
+  "name": "@floortech/vulcrumjs",
+  "version": "0.1.0",
   "description": "FloorTech's own web framework, based on TypeScript!",
   "main": "dist/index.js",
   "type": "module",
@@ -11,7 +10,7 @@
     "start": "node dist/index.js"
   },
   "bin": {
-    "vulcrum": "dist/index.js"
+    "vulcrum": "node dist/index.js"
   },
   "author": "FloorTech",
   "license": "MIT",

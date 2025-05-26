@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Dev files
+tsconfig.json
+src
+examples
+
+# Environment files
+.env*
+!.env.example
+
+# Logs
+*.log
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+
+# Yarn specific
+yarn-error.log
