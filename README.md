@@ -1,6 +1,6 @@
 # VulcrumJS
 
-> The current version only has a demo set up, but no CLI tool
+> The current version now has a *CLI tool*, and you can access the documentation with `npx vulcrum -h`
 
 You may have used React before, and fell in love with JSX. However, the rest of React's tools (like the Virtual DOM) are not right for you. You may also want automatic SSG by default. *VulcrumJS* solves these problems, and more! It is designed very similar to JSX, but in vanilla JavaScript. The design also takes Next.js's idea of separate functions for metadata, and extended it. Not only that, but custom *components* work. Because *VulcrumJS* uses JavaScript functions for *components* that return strings, you can use a custom string, too! The *components* are only for ease of typing and complex, custom elements.
 
@@ -49,25 +49,21 @@ export default function cool({ p, }) {
 
 Non-primary components are more free because you don't actually have to follow *VulcrumJS's* standards. You only need some way to return a string. This brings up a great point: ***VulcrumJS's* components are just functions that return a string!**
 
-## Developer's Guide
-
-> Currently, input values are preset at the bottom of the `index.ts`, or `index.js` if you compiled the project first. If you want to make your own template, see the example's template for a better understanding.
+## Developers's Guide
 
 ### Step 1 *Configuring*
 
-Set your input values in the `index.(ts/js)` file, which is located in either `src/` or `dist/`.
-
-```javascript
-buildComponent("examples/home.js", "examples/template.html") // Specifies the component to build and the template file
-```
+Copy the example, and edit/create components.
 
 ### Step 2 *Compiling & Testing*
 
 Run the commands below to start up the program.
 
 ```bash
-npm run build
-npm run start
+npx vulcrum -m build -p path-to-component.js
+
+# Optional
+npx vulcrum -m build -p path-to-component.js -t path-to-template.html
 ```
 
 ### Step 3 *Uploading*
