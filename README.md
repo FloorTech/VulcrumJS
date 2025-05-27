@@ -1,4 +1,7 @@
-# VulcrumJS
+<div align="center">
+    <img src="https://github.com/FloorTech/VulcrumJS/blob/5825547933daebc56eacfb80cbd9466855402d48/gh-content/VulcrumJS%20Logo.jpeg" />
+    <h1>VulcrumJS</h1>
+</div>
 
 > The current version now has a *CLI tool*, and you can access the documentation with `npx vulcrum -h`
 
