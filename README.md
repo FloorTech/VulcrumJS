@@ -1,13 +1,20 @@
-<div align="center">
-    <img src="https://github.com/FloorTech/VulcrumJS/blob/5825547933daebc56eacfb80cbd9466855402d48/gh-content/VulcrumJS%20Logo.jpeg" />
-    <h1>VulcrumJS</h1>
-</div>
-
 > The current version now has a *CLI tool*, and you can access the documentation with `npx vulcrum -h`
+
+<div align="center">
+
+<a href="#">
+    <img src="https://github.com/FloorTech/VulcrumJS/blob/5825547933daebc56eacfb80cbd9466855402d48/gh-content/VulcrumJS%20Logo.jpeg" />
+</a>
+
+# VulcrumJS
 
 You may have used React before, and fell in love with JSX. However, the rest of React's tools (like the Virtual DOM) are not right for you. You may also want automatic SSG by default. *VulcrumJS* solves these problems, and more! It is designed very similar to JSX, but in vanilla JavaScript. The design also takes Next.js's idea of separate functions for metadata, and extended it. Not only that, but custom *components* work. Because *VulcrumJS* uses JavaScript functions for *components* that return strings, you can use a custom string, too! The *components* are only for ease of typing and complex, custom elements.
 
+</div>
+
 ## Examples
+
+> A complete example is located [here](https://github.com/FloorTech/VulcrumJS-Example)
 
 ```javascript
 import cool from "./cool.js"
