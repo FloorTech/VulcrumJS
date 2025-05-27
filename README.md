@@ -3,7 +3,7 @@
 <div align="center">
 
 <a href="#">
-    <img src="https://github.com/FloorTech/VulcrumJS/blob/5825547933daebc56eacfb80cbd9466855402d48/gh-content/VulcrumJS%20Logo.jpeg" />
+    <img src="https://github.com/FloorTech/VulcrumJS/blob/5825547933daebc56eacfb80cbd9466855402d48/gh-content/VulcrumJS%20Logo.jpeg" width="60%" />
 </a>
 
 # VulcrumJS
